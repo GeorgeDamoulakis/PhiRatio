@@ -36,8 +36,6 @@ def counting_pixels(): # this defines the counting pixel process
 
     print(f'PHI ratio: ', round(Phi_ratio, 2)) # it's get rounded to 2 digits
 
-
-
 img = cv2.imread('C:\\Users\\Dino\\PycharmProjects\\Phi_ratio\\wp08.tif',0) #this loads the image into grayscale
 
 print('Program starts.')
