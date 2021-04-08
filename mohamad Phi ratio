@@ -1,0 +1,33 @@
+import cv2
+
+# import the image
+originalImage = cv2.imread('C:\\Users\\Dino\\Desktop\\mohamad pictures from UoC\\90per-50x-far-edge.jpg')
+# use this to go from color image to black and white
+grayImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
+(thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 127, 255, cv2.THRESH_BINARY)
+#present the images
+cv2.imshow('Black white image', blackAndWhiteImage)
+cv2.imshow('Original image', originalImage)
+#cv2.imshow('Gray image', grayImage)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# here is function
+def counting_pixels(img): # this defines the counting pixel process
+    l1 = len(img)        # this is the length of the BIG array
+    l2 = len(img[1])     # this is the length of the first array of the BIG array
+    phil_pixels = 0       # this is the initial definition of the philic pixels
+
+    # all the black or blackish pixels are superhyrophilic
+    for i in range(l1):
+        for j in range(l2):
+            if img[i][j] > 127: # every object inside the array has a number from 0 (total black)
+                                # to 255 (total white) . We want the black ones..
+                phil_pixels += 1 # this is the blackish pixel counter
+
+    print(f'Superhydrophilic pixels: ', phil_pixels)
+    Phi_ratio = phil_pixels / (1636*1088) #these numbers are the size of the photo
+    print(f'PHI ratio: ', round(Phi_ratio, 2)) # it's get rounded to 2 digits
+
+#here runs the fuction
+counting_pixels(blackAndWhiteImage)
